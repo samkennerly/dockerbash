@@ -14,8 +14,8 @@ to any folder on your machine.
 3. Enter `bin/show` to see what Docker is doing.
 
 You might need to 
-`sudo chmod 755 bin/*`
-to make scripts in the [bin](bin) folder executable.
+`sudo chmod 744 bin/*`
+to make scripts executable.
 
 ## examples
 
@@ -47,7 +47,7 @@ unused data:
 
     bin/clean
 
-[Bake](bin/bake)
+[Build](bin/bake)
 a fresh image from a local 
 [context folder](https://docs.docker.com/engine/reference/commandline/build/#extended-description):
 
@@ -61,10 +61,9 @@ in your
 [.profile](https://apple.stackexchange.com/questions/99835/how-to-create-bash-profile-and-profile)
 to avoid repeatedly typing  
 `/path/to/wherever/you/cloned/dockerbash/bin`  
-every time you want to run a script. For example:
+every time you want to run a script. Example:
 
 ```
-# Docker scripts
 dockerbash="$HOME/code/dockerbash"
 alias bake="$dockerbash/bin/bake"
 alias runit="$dockerbash/bin/runit"
