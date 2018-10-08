@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Run selected image interactively in a terminal.
+# Type 'exit' to exit. Container will self-destruct.
+# Any extra arguments are passed to 'docker run' command.
+
+docker run --interactive --tty --rm "$@"

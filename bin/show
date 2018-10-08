@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Print human-readable summary of Docker objects.
+
+bigprint() { printf "\n__________ $1 __________\n"; }
+
+bigprint 'Images'; docker image ls
+bigprint 'Volumes'; docker volume ls
+bigprint 'Networks'; docker network ls
+bigprint 'Containers'; docker ps --all
+printf "\n"

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Stop all running containers. Delete all containers.
+# Delete unused networks, dangling images, and build cache.
+# Does not delete named volumes.
+
+docker ps --quiet | xargs docker kill
+docker system prune --force

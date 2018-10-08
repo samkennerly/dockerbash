@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Delete selected image and any containers using it.
+
+docker ps --filter ancestor="$1" --quiet | xargs docker rm --force
+docker rmi "$1" --force
