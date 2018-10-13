@@ -6,6 +6,29 @@ scripts for common
 [Docker](https://www.docker.com/)
 commands.
 
+## use Docker without losing track of reality
+
+Sometimes I forget which of the
+[many Docker commands and options]
+(https://docs.docker.com/engine/reference/commandline/cli/)
+I need.
+
+![Can I run these scripts inside a Docker container?](squint.jpg)
+
+Running *dockerbash* scripts helps prevent me from:
+
+* building images with no 
+[tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t)
+* forgetting about
+[detached containers](https://docs.docker.com/engine/reference/run/#detached-vs-foreground)
+* filling my hard disk with
+[dangling images](https://docs.docker.com/config/pruning/)
+* cluttering my system with
+[temporary containers](https://docs.docker.com/engine/reference/run/#clean-up---rm)
+* repeatedly
+[mistyping long commands](https://github.com/nvbn/thefuck)
+
+
 ## quickstart
 
 1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/)
@@ -13,45 +36,52 @@ to any folder on your machine.
 2. Open a terminal and `cd` to that folder.
 3. Enter `bin/show` to see what Docker is doing.
 
-You might need to 
-`sudo chmod 744 bin/*`
-to make scripts executable.
+Each *dockerbash* script is an
+[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions)
+file in the
+[bin](bin)
+folder.  
+You might need to
+[sudo](https://en.wikipedia.org/wiki/Sudo)
+[chmod](https://en.wikipedia.org/wiki/Chmod)
+them if their permissions are incorrect.
 
-## examples
+## scripts
 
-[Show](bin/show)
-a human-readable summary of Docker stuff on your machine:
+**[bake](bin/bake)**  
+Build or update an image from a local 
+[context](https://docs.docker.com/engine/reference/commandline/build/#extended-description).
 
-    bin/show
+    bin/bake myimage:latest path/to/some/folder
 
-[Run](bin/runit)
-a command
-[interactively](https://docs.docker.com/engine/reference/run/#foreground)
-in a
-[self-destructing](https://docs.docker.com/engine/reference/run/#clean-up---rm)
-container:
-
-    bin/runit ubuntu:latest echo 'Hello, World!'
-
-[Delete](bin/delete)
-an image and any containers using it:
-
-    bin/delete ubuntu:latest
-
-[Clean](bin/clean)
-your system by
-[killing](https://docs.docker.com/engine/reference/commandline/kill/)
-containers and
-[pruning](https://docs.docker.com/engine/reference/commandline/system_prune/)
-unused data:
+**[clean](bin/clean)**  
+[Kill](https://docs.docker.com/engine/reference/commandline/kill/)
+running containers and
+[prune](https://docs.docker.com/engine/reference/commandline/system_prune/)
+unused Docker objects.
 
     bin/clean
 
-[Build](bin/bake)
-a fresh image from a local 
-[context folder](https://docs.docker.com/engine/reference/commandline/build/#extended-description):
+**[delete](bin/delete)**  
+Delete an image and any containers
+[descended](https://docs.docker.com/engine/reference/commandline/ps/#ancestor)
+from it.
 
-    bin/bake myimage:latest path/to/myimage/folder
+    bin/delete debian:latest
+
+**[runit](bin/runit)**  
+Run a command
+[interactively](https://docs.docker.com/engine/reference/run/#foreground)
+in a
+[self-destructing](https://docs.docker.com/engine/reference/run/#clean-up---rm)
+container.
+
+    bin/runit debian:latest bash
+
+**[show](bin/show)**  
+Print a human-readable summary of Docker stuff on your machine.
+
+    bin/show
 
 ## aliases
 
@@ -59,7 +89,7 @@ Consider defining
 [aliases](http://tldp.org/LDP/abs/html/aliases.html)
 in your
 [.profile](https://apple.stackexchange.com/questions/99835/how-to-create-bash-profile-and-profile)
-to avoid repeatedly typing  
+to avoid typing  
 `/path/to/wherever/you/cloned/dockerbash/bin`  
 every time you want to run a script. Example:
 
