@@ -8,13 +8,11 @@ commands.
 
 ## use Docker without losing track of reality
 
-Sometimes I forget which of the
-[many Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/)
-I need.
+Sometimes I create so many images and containers that I forget what I'm doing.
 
-![Can I run these scripts inside a Docker container?](squint.jpg)
+![*squints*](squint.jpg)
 
-Running *dockerbash* scripts helps prevent me from:
+Running a few standardized scripts helps prevent me from:
 
 * building images with no 
 [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t)
@@ -24,6 +22,8 @@ Running *dockerbash* scripts helps prevent me from:
 [dangling images](https://docs.docker.com/config/pruning/)
 * cluttering my system with
 [temporary containers](https://docs.docker.com/engine/reference/run/#clean-up---rm)
+* searching through all
+[Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/)
 * repeatedly
 [mistyping long commands](https://github.com/nvbn/thefuck)
 
