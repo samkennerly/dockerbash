@@ -9,8 +9,7 @@ commands.
 ## use Docker without losing track of reality
 
 Sometimes I forget which of the
-[many Docker commands and options]
-(https://docs.docker.com/engine/reference/commandline/cli/)
+[many Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/)
 I need.
 
 ![Can I run these scripts inside a Docker container?](squint.jpg)
