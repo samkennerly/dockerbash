@@ -8,34 +8,31 @@ commands.
 
 ## use Docker without losing track of reality
 
-Sometimes I create so many images and containers that I forget what I'm doing.
+Sometimes I get confused by all the images and containers I've created.
 
-![*squints*](squint.jpg)
+![Can Docker run containers inside containers?](squint.jpg)
 
 Running a few standardized scripts helps prevent me from:
 
 * building images with no 
 [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t)
-* forgetting about
+* forgetting to stop
 [detached containers](https://docs.docker.com/engine/reference/run/#detached-vs-foreground)
-* filling my hard disk with
-[dangling images](https://docs.docker.com/config/pruning/)
-* cluttering my system with
+* forgetting to delete
 [temporary containers](https://docs.docker.com/engine/reference/run/#clean-up---rm)
+* wasting disk space with
+[dangling images](https://docs.docker.com/config/pruning/)
 * searching through all
-[Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/)
-* repeatedly
-[mistyping long commands](https://github.com/nvbn/thefuck)
-
+[Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/) 
 
 ## quickstart
 
 1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/)
 to any folder on your machine.
 2. Open a terminal and `cd` to that folder.
-3. Enter `bin/show` to see what Docker is doing.
+3. Enter `bin/runit hello-world:linux`.
 
-Scripts are in the
+Scripts are in the 
 [bin](bin)
 folder. You may need to
 [sudo](https://en.wikipedia.org/wiki/Sudo)
@@ -45,29 +42,26 @@ them to make them
 
 ## scripts
 
-**[bake](bin/bake)**  
-Build or update an image from a local 
+**[bake](bin/bake)**
+builds or rebuilds an image from a local 
 [context](https://docs.docker.com/engine/reference/commandline/build/#extended-description).
 
     bin/bake myimage:latest path/to/some/folder
 
-**[clean](bin/clean)**  
-[Kill](https://docs.docker.com/engine/reference/commandline/kill/)
-running containers and
-[prune](https://docs.docker.com/engine/reference/commandline/system_prune/)
-unused Docker objects.
+**[clean](bin/clean)**
+deletes all containers and any
+[unused objects](https://docs.docker.com/engine/reference/commandline/system_prune/).
 
     bin/clean
 
-**[delete](bin/delete)**  
-Delete an image and any containers
-[descended](https://docs.docker.com/engine/reference/commandline/ps/#ancestor)
-from it.
+**[delete](bin/delete)**
+deletes an image and any containers
+[descended from it](https://docs.docker.com/engine/reference/commandline/ps/#ancestor).
 
     bin/delete debian:latest
 
-**[runit](bin/runit)**  
-Run a command
+**[runit](bin/runit)**
+runs a command
 [interactively](https://docs.docker.com/engine/reference/run/#foreground)
 in a
 [self-destructing](https://docs.docker.com/engine/reference/run/#clean-up---rm)
@@ -75,8 +69,8 @@ container.
 
     bin/runit debian:latest bash
 
-**[show](bin/show)**  
-Print a summary of Docker objects.
+**[show](bin/show)**
+prints a summary of Docker objects on your machine.
 
     bin/show
 
@@ -86,11 +80,10 @@ Consider defining
 [aliases](http://tldp.org/LDP/abs/html/aliases.html)
 in your
 [.bash_profile](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)
-to avoid typing  
-`/path/to/wherever/you/cloned/dockerbash/bin`  
-every time you want to run a script. Example:
+if you use these scripts often. Example:
 
 ```
+# Dockerbash aliases
 dockerbash="$HOME/code/dockerbash"
 alias bake="$dockerbash/bin/bake"
 alias runit="$dockerbash/bin/runit"
