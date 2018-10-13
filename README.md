@@ -35,13 +35,12 @@ to any folder on your machine.
 2. Open a terminal and `cd` to that folder.
 3. Enter `bin/show` to see what Docker is doing.
 
-All scripts are in the
+Scripts are in the
 [bin](bin)
-folder.  
-You might need to
+folder. You may need to
 [sudo](https://en.wikipedia.org/wiki/Sudo)
 [chmod](https://en.wikipedia.org/wiki/Chmod)
-them if they are not
+them to make them
 [executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions).
 
 ## scripts
@@ -77,7 +76,7 @@ container.
     bin/runit debian:latest bash
 
 **[show](bin/show)**  
-Print a human-readable summary of Docker stuff on your machine.
+Print a summary of Docker objects.
 
     bin/show
 
