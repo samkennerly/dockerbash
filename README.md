@@ -35,15 +35,14 @@ to any folder on your machine.
 2. Open a terminal and `cd` to that folder.
 3. Enter `bin/show` to see what Docker is doing.
 
-Each *dockerbash* script is an
-[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions)
-file in the
+All scripts are in the
 [bin](bin)
 folder.  
 You might need to
 [sudo](https://en.wikipedia.org/wiki/Sudo)
 [chmod](https://en.wikipedia.org/wiki/Chmod)
-them if their permissions are incorrect.
+them if they are not
+[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions).
 
 ## scripts
 
