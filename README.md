@@ -87,7 +87,7 @@ Print a human-readable summary of Docker stuff on your machine.
 Consider defining
 [aliases](http://tldp.org/LDP/abs/html/aliases.html)
 in your
-[.profile](https://apple.stackexchange.com/questions/99835/how-to-create-bash-profile-and-profile)
+[.bash_profile](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)
 to avoid typing  
 `/path/to/wherever/you/cloned/dockerbash/bin`  
 every time you want to run a script. Example:
