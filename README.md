@@ -12,7 +12,7 @@ Sometimes I get confused by all the images and containers I've created.
 
 ![Can Docker run containers inside containers?](squint.jpg)
 
-Running a few standardized scripts helps prevent me from:
+Running *dockerbash* scripts helps prevent me from:
 
 * building images with no 
 [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t)
@@ -30,7 +30,7 @@ Running a few standardized scripts helps prevent me from:
 1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/)
 to any folder on your machine.
 2. Open a terminal and `cd` to that folder.
-3. Enter `bin/runit hello-world:linux`.
+3. Enter `bin/runit hello-world` to run a test container.
 
 Scripts are in the 
 [bin](bin)
@@ -58,7 +58,7 @@ deletes all containers and any
 deletes an image and any containers
 [descended from it](https://docs.docker.com/engine/reference/commandline/ps/#ancestor).
 
-    bin/delete debian:latest
+    bin/delete debian:stable
 
 **[runit](bin/runit)**
 runs a command
@@ -67,7 +67,7 @@ in a
 [self-destructing](https://docs.docker.com/engine/reference/run/#clean-up---rm)
 container.
 
-    bin/runit debian:latest bash
+    bin/runit debian:stable bash
 
 **[show](bin/show)**
 prints a summary of Docker objects on your machine.
