@@ -4,7 +4,7 @@
 
 bigprint() { printf "\n__________ $1 __________\n"; }
 
-bigprint 'Images'; docker image ls
+bigprint 'Images'; docker image ls | sort
 bigprint 'Volumes'; docker volume ls
 bigprint 'Networks'; docker network ls
 bigprint 'Containers'; docker ps --all
