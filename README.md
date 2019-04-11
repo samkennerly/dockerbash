@@ -6,7 +6,7 @@ scripts for common
 [Docker](https://www.docker.com/)
 commands.
 
-## use Docker without losing track of reality
+## short scripts for long Docker commands
 
 Sometimes I get confused by all the images and containers I've created.
 
@@ -22,25 +22,25 @@ Running *dockerbash* scripts helps prevent me from:
 [temporary containers](https://docs.docker.com/engine/reference/run/#clean-up---rm)
 * wasting disk space with
 [dangling images](https://docs.docker.com/config/pruning/)
-* searching through all
+* searching through 
 [Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/) 
 
 ## quickstart
 
-1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/)
-to any folder on your machine.
+1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/) to a folder on your machine.
 2. Open a terminal and `cd` to that folder.
 3. Enter `bin/runit hello-world` to run a test container.
 
 Scripts are in the 
 [bin](bin)
-folder. You may need to
+folder. If they are not
+[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions),
+then 
 [sudo](https://en.wikipedia.org/wiki/Sudo)
 [chmod](https://en.wikipedia.org/wiki/Chmod)
-them to make them
-[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions).
+them.
 
-## scripts
+## run scripts
 
 **[bake](bin/bake)**
 builds or rebuilds an image from a local 
@@ -49,7 +49,7 @@ builds or rebuilds an image from a local
     bin/bake myimage:latest path/to/some/folder
 
 **[clean](bin/clean)**
-deletes all containers and any
+deletes all containers and
 [unused objects](https://docs.docker.com/engine/reference/commandline/system_prune/).
 
     bin/clean
@@ -58,36 +58,26 @@ deletes all containers and any
 deletes an image and any containers
 [descended from it](https://docs.docker.com/engine/reference/commandline/ps/#ancestor).
 
-    bin/delete debian:stable
+    bin/delete python:3.7
+
+**[kill](bin/kill)**
+kills all containers descended from the selected image.
+
+    bin/kill python:3.7
 
 **[runit](bin/runit)**
-runs a command
-[interactively](https://docs.docker.com/engine/reference/run/#foreground)
-in a
+runs an
+[interactive](https://docs.docker.com/engine/reference/run/#foreground),
 [self-destructing](https://docs.docker.com/engine/reference/run/#clean-up---rm)
 container.
 
-    bin/runit debian:stable bash
+    bin/runit python:3.7
 
 **[show](bin/show)**
 prints a summary of Docker objects on your machine.
 
     bin/show
 
-## aliases
+## uninstall
 
-Consider defining
-[aliases](http://tldp.org/LDP/abs/html/aliases.html)
-in your
-[.bash_profile](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)
-if you use these scripts often. Example:
-
-```
-# Dockerbash aliases
-dockerbash="$HOME/code/dockerbash"
-alias bake="$dockerbash/bin/bake"
-alias runit="$dockerbash/bin/runit"
-alias dockerclean="$dockerbash/bin/clean"
-alias dockerdelete="$dockerbash/bin/delete"
-alias dockershow="$dockerbash/bin/show"
-```
+Delete this repository from your machine.
