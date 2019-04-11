@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Run selected image interactively in a terminal.
-# Type 'exit' to exit. Container will self-destruct.
-# Any extra arguments are passed to 'docker run' command.
+# Run a self-destructing, interactive container from selected image.
+# Example: runit python
+# Example: runit python:3.7
+# Example: runit python:3.7 ls -la
 
 docker run --interactive --tty --rm "$@"

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Delete selected image and any containers using it.
+# Example: delete python:3.7
 
-docker ps --filter ancestor="$1" --quiet | xargs docker rm --force
-docker rmi "$1" --force
+docker ps --quiet --filter ancestor="$1" | xargs docker rm --force
+docker image rm "$1" --force

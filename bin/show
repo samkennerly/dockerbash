@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Print human-readable summary of Docker objects.
+# Print a human-readable summary of Docker objects.
 
 bigprint() { printf "\n__________ $1 __________\n"; }
 

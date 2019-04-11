@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Build image. If it exists, then rebuild it.
-# Input image tag and path to context folder.
+# Build (or rebuild) a Docker image and tag it.
+# Example: bake myimage:latest path/to/context/folder
 
 docker build --tag "$1" "$2"
