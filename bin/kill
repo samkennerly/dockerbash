@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Kill all containers descended from the selected image.
+# Example: kill python:3.7
+
+docker ps --quiet --filter ancestor="$1" | xargs docker kill
