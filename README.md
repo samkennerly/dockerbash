@@ -1,83 +1,97 @@
 # dockerbash
 
-Short
-[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
-scripts for common
+Keeping track of all my containers can be difficult.
+
+![trouble](dockerbash.jpeg)
+
+## abstract
+
+*Dockerbash* is a few short
+[shell scripts](https://en.wikipedia.org/wiki/Shell_script)
+which run
 [Docker](https://www.docker.com/)
-commands.
+commands for:
 
-## short scripts for long Docker commands
-
-Sometimes I get confused by all the images and containers I've created.
-
-![Can Docker run containers inside containers?](squint.jpg)
-
-Running *dockerbash* scripts helps prevent me from:
-
-* building images with no 
+- remembering to
 [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t)
-* forgetting to stop
+images
+- deleting
+[dangling images](https://docs.docker.com/config/pruning/#prune-images)
+and other
+[leftovers](https://docs.docker.com/engine/reference/commandline/system_prune/)
+- stopping
 [detached containers](https://docs.docker.com/engine/reference/run/#detached-vs-foreground)
-* forgetting to delete
-[temporary containers](https://docs.docker.com/engine/reference/run/#clean-up---rm)
-* wasting disk space with
-[dangling images](https://docs.docker.com/config/pruning/)
-* searching through 
-[Docker commands and options](https://docs.docker.com/engine/reference/commandline/cli/) 
+which I forgot about
+- running
+[interactive](https://docs.docker.com/engine/reference/run/#foreground)
+containers which
+[self-destruct](https://docs.docker.com/engine/reference/run/#clean-up---rm)
+when finished
+- showing all my containers, images, volumes, and networks on one screen
 
-## quickstart
+## basics
 
-1. [Clone this repository](https://help.github.com/articles/cloning-a-repository/) to a folder on your machine.
-2. Open a terminal and `cd` to that folder.
-3. Enter `bin/runit hello-world` to run a test container.
+1. [Clone this repo](https://help.github.com/articles/cloning-a-repository/) to a folder on your machine.
+2. Open a
+[terminal](https://en.wikipedia.org/wiki/Command-line_interface)
+and `cd` to that folder.
+3. `bin/runit hello-world` to run a test container.
 
-Scripts are in the 
+Scripts are in the
 [bin](bin)
-folder. If they are not
-[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions),
-then 
-[sudo](https://en.wikipedia.org/wiki/Sudo)
+folder.
+You might need to
 [chmod](https://en.wikipedia.org/wiki/Chmod)
-them.
+them if they are not
+[executable](https://en.wikipedia.org/wiki/File_system_permissions#Permissions).
 
-## run scripts
+## commands
 
-**[bake](bin/bake)**
-builds or rebuilds an image from a local 
+| description | command |
+| ---- | ---- |
+| build an image and tag it | `bake TAG [CONTEXT]` |
+| delete all containers and leftovers | `clean` |
+| delete an image and any containers using it | `delete IMAGE` |
+| stop all containers create from an image | `kill IMAGE` |
+| run an interactive, self-destructing container | `runit [OPTIONS] IMAGE [CMD]` |
+| show images, volumes, networks, and containers | `show` |
+
+## dependencies
+
+1. Docker for
+[Linux](https://docs.docker.com/install/),
+[Mac](https://docs.docker.com/v17.12/docker-for-mac/install/),
+or
+[Windows](https://docs.docker.com/docker-for-windows/install/)
+
+## examples
+
+Build (or rebuild) `myimage:v2` with `path/to/some/folder` as
 [context](https://docs.docker.com/engine/reference/commandline/build/#extended-description).
+```bash
+bin/bake myimage:v2 path/to/some/folder
+```
 
-    bin/bake myimage:latest path/to/some/folder
+Run `bash` in an interactive, self-destructing `myimage:v2` container.
+```
+bin/runit myimage:v2 bash
+```
 
-**[clean](bin/clean)**
-deletes all containers and
-[unused objects](https://docs.docker.com/engine/reference/commandline/system_prune/).
-
-    bin/clean
-
-**[delete](bin/delete)**
-deletes an image and any containers
+Delete `myimage:v2` and any containers
 [descended from it](https://docs.docker.com/engine/reference/commandline/ps/#ancestor).
+```bash
+bin/delete myimage:v2
+```
 
-    bin/delete python:3.7
+Stop all containers descended from `myimage:v2`.
+```bash
+bin/kill myimage:v2
+```
 
-**[kill](bin/kill)**
-kills all containers descended from the selected image.
+## faq
 
-    bin/kill python:3.7
+### Where are the official docs?
 
-**[runit](bin/runit)**
-runs an
-[interactive](https://docs.docker.com/engine/reference/run/#foreground),
-[self-destructing](https://docs.docker.com/engine/reference/run/#clean-up---rm)
-container.
-
-    bin/runit python:3.7
-
-**[show](bin/show)**
-prints a summary of Docker objects on your machine.
-
-    bin/show
-
-## uninstall
-
-Delete this repository from your machine.
+- Docker [CLI](https://docs.docker.com/engine/reference/commandline/cli/)
+- Docker [run](https://docs.docker.com/engine/reference/run/)
+- [Dockerfile](https://docs.docker.com/engine/reference/builder/)
