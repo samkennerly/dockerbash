@@ -3,4 +3,4 @@
 # Build (or rebuild) a Docker image and tag it.
 # Example: bake myimage:latest path/to/context/folder
 
-docker build --tag "$1" "$2"
+docker build --tag "$1" "${2:-.}"
