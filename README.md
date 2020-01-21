@@ -2,7 +2,10 @@
 
 Keeping track of all my containers can be difficult.
 
-![trouble](dockerbash.jpeg)
+<img
+  alt="tribbles"
+  src="https://raw.githubusercontent.com/samkennerly/posters/master/dockerbash.jpeg"
+  title="They noil not, neither do they spin.">
 
 ## abstract
 
