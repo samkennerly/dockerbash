@@ -16,7 +16,7 @@ which run
 commands for:
 
 - remembering to
-[tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t)
+[tag](https://docs.docker.com/engine/reference/commandline/build/#tag)
 images
 - deleting
 [dangling images](https://docs.docker.com/config/pruning/#prune-images)
@@ -30,7 +30,7 @@ which I forgot about
 containers which
 [self-destruct](https://docs.docker.com/engine/reference/run/#clean-up---rm)
 when finished
-- showing all my containers, images, volumes, and networks on one screen
+- showing all my containers, images, volumes, and networks
 
 ## basics
 
@@ -69,8 +69,8 @@ or
 
 ## examples
 
-Build (or rebuild) `myimage:v2` with `path/to/some/folder` as
-[context](https://docs.docker.com/engine/reference/commandline/build/#extended-description).
+Build (or rebuild) `myimage:v2` with `path/to/some/folder` as the
+[build context](https://docs.docker.com/engine/reference/commandline/build/#extended-description).
 ```bash
 bin/bake myimage:v2 path/to/some/folder
 ```
